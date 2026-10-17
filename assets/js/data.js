@@ -39,7 +39,7 @@ window.CF_DATA = {
         ["Prima Kottumee Cheese & Onion 80g", 1.59], ["Harischandra Kurakkan Noodles 400g", 3.99],
         ["Prima Kottumee Masala 80g", 1.59]
       ] },
-    { slug: "ceylon-spices", name: "Ceylon Spices", icon: "🌶️", hue: 8,
+    { slug: "ceylon-spices", photo: "spices.jpg", credit: "McKay Savage, CC BY 2.0", name: "Ceylon Spices", icon: "🌶️", hue: 8,
       blurb: "Roasted curry powders, true cinnamon and island chilli.",
       products: [
         ["Wijaya Buriyani Masala 250g", 6.49], ["Wijaya Mustard Seed 100g", 2.49],
@@ -81,7 +81,7 @@ window.CF_DATA = {
         ["Fab Pol Roti 6 Pack 420g", 10.49], ["Fab Seeni Sambol Bun 320g", 10.49],
         ["Fab Chocolate Fudge Cake 500g", 19.49]
       ] },
-    { slug: "milk-powder-ceylon-tea", name: "Milk Powder & Ceylon Tea", icon: "🍵", hue: 140,
+    { slug: "milk-powder-ceylon-tea", photo: "tea-plantation.jpg", credit: "Vyacheslav Argenberg, CC BY 4.0", name: "Milk Powder & Ceylon Tea", icon: "🍵", hue: 140,
       blurb: "Dilmah, Bogawanthalawa, Zesta and the milk powder for a proper cuppa.",
       products: [
         ["Sustagen Vanilla", 25.99], ["Anchor Milk Powder 900g", 17.49],
@@ -124,7 +124,7 @@ window.CF_DATA = {
         ["Mikee Milk Toffee 200g", 5.99], ["Mikee Kalu Dodol 500g", 8.99],
         ["Mikee Coconut Rock 200g", 5.99]
       ] },
-    { slug: "sl-fish-items", name: "SL Fish Items", icon: "🐟", hue: 190,
+    { slug: "sl-fish-items", photo: "stilt-fishing.jpg", credit: "Jakub Hałun, CC BY 4.0", name: "SL Fish Items", icon: "🐟", hue: 190,
       blurb: "Sprats, katta, Maldive fish and every dry fish for your pol sambol.",
       products: [
         ["Malu Malu Headless Sprats 1lb", 11.99, "new"], ["Srilak Muhudu Kukula Dry Fish 200g", 6.99],
@@ -167,7 +167,7 @@ window.CF_DATA = {
         ["Kothmale Faluda Milk 180ml", 2.49, "oos"], ["Kothmale Vanilla Milk 180ml", 2.49, "oos"],
         ["MD Mixed Fruit Cordial 750ml", 7.99]
       ] },
-    { slug: "religious-items", name: "Religious Items", icon: "🪷", hue: 40,
+    { slug: "religious-items", photo: "perahera.jpg", credit: "Daniel Liabeuf, CC BY-SA 3.0", name: "Religious Items", icon: "🪷", hue: 40,
       blurb: "Offerings and items for poya days and temple visits.",
       products: [["Atapirikara", 49.99]] },
     { slug: "sl-treacle-jaggery", name: "Treacle & Jaggery", icon: "🍯", hue: 28,
@@ -176,7 +176,7 @@ window.CF_DATA = {
         ["AMK Kithul Treacle 725ml", 12.99], ["Raala Kithul Jaggery Cube 260g", 9.99, "new"],
         ["Raala Kithul Jaggery 250g", 9.99, "new"], ["Raala Kithul Treacle 1000ml", 21.99, "new"]
       ] },
-    { slug: "sl-ready-to-eat", name: "Ready to Eat", icon: "🍛", hue: 60,
+    { slug: "sl-ready-to-eat", photo: "rice-and-curry.jpg", credit: "Lankan Foodie, CC BY-SA 4.0", name: "Ready to Eat", icon: "🍛", hue: 60,
       blurb: "Polos curry, veralu, kohila in brine and fried sprats.",
       products: [
         ["AMK Veralu in Brine 700g", 6.99], ["MD Innala in Brine 560g", 6.99],

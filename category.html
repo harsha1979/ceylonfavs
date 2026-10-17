@@ -62,8 +62,14 @@
       document.getElementById("heroEmo").textContent = cat.icon;
       document.getElementById("heroTitle").textContent = cat.name;
       document.getElementById("heroBlurb").textContent = cat.blurb;
-      document.getElementById("catHero").style.background =
-        `radial-gradient(600px 260px at 90% 0%, hsl(${cat.hue} 75% 55% / .45), transparent 70%), var(--leaf)`;
+      const hero = document.getElementById("catHero");
+      if (cat.photo) {
+        hero.classList.add("has-photo");
+        hero.insertAdjacentHTML("afterbegin", `<div class="hero-photo" style="background-image:url(assets/img/${cat.photo})"></div>`);
+        hero.insertAdjacentHTML("beforeend", `<span class="photo-credit" style="color:#fff;font-size:.62rem;text-shadow:0 1px 3px rgba(0,0,0,.6)">Photo: ${esc(cat.credit)}</span>`);
+      } else {
+        hero.style.background = `radial-gradient(600px 260px at 90% 0%, hsl(${cat.hue} 75% 70% / .35), transparent 70%), var(--mint)`;
+      }
     } else if (qEl.value) {
       document.getElementById("heroTitle").textContent = `Results for “${qEl.value}”`;
       document.getElementById("heroBlurb").textContent = "Searching across every category.";

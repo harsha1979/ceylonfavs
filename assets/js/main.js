@@ -160,7 +160,7 @@
           <div class="pay-row">${S.payments.map((p) => `<span>${p}</span>`).join("")}</div>
         </div>
       </div>
-      <div class="foot-bottom"><span>© ${new Date().getFullYear()} ${S.name}. All rights reserved.</span><span>Made with ❤️ and a lot of curry powder.</span></div>
+      <div class="foot-bottom"><span>© ${new Date().getFullYear()} ${S.name}. All rights reserved.</span><span><a href="credits.html" style="display:inline">Photo credits</a> · Made with ❤️ and a lot of curry powder.</span></div>
     </div>
   </footer>`;
 

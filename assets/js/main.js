@@ -58,7 +58,7 @@
     <div class="wrap header-row">
       <button class="icon-btn menu-toggle" aria-label="Open menu" data-open-mnav>${icons.menu}</button>
       <a href="index.html" class="logo" aria-label="${S.name} home">
-        <span class="logo-mark">C</span>
+        <img class="logo-img" src="assets/img/logo-192.png" alt="" width="60" height="60">
         <span class="logo-text">Ceylon Favorites<small>Sri Lankan Store · USA</small></span>
       </a>
       <nav class="nav" aria-label="Main">
@@ -132,7 +132,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a href="index.html" class="logo"><span class="logo-mark">C</span><span class="logo-text">Ceylon Favorites</span></a>
+          <a href="index.html" class="logo"><img class="logo-img footer-logo" src="assets/img/logo-192.png" alt="" width="96" height="96"><span class="logo-text">Ceylon Favorites</span></a>
           <p class="foot-about">${esc(S.tagline)} Authentic Sri Lankan groceries, spices, teas and frozen favourites — shipped across the USA.</p>
           <div class="socials"><a href="${S.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${icons.fb}</a><a href="${S.phoneHref}" aria-label="WhatsApp">${icons.wa}</a></div>
         </div>

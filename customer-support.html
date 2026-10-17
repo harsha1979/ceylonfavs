@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Support — Ceylon Favorites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="support">
+<main>
+<section class="page-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / Customer Support</div>
+  <div class="hero-emo">💬</div>
+  <h1>How can we help?</h1>
+  <p>Questions about an order, shipping or a product? Send us a message and we'll get back to you.</p>
+</div></section>
+<section class="content"><div class="wrap">
+  <div class="info-grid">
+    <a class="info reveal" href="tel:+17373976112"><div class="perk-ico">📞</div><b>Call us</b><p>737-397-6112</p></a>
+    <a class="info reveal" href="mailto:support@ceylonfavs.com"><div class="perk-ico">✉️</div><b>Email us</b><p>support@ceylonfavs.com</p></a>
+    <a class="info reveal" href="shipping-returns.html"><div class="perk-ico">📦</div><b>Shipping &amp; returns</b><p>Policies, pickup hours and refunds.</p></a>
+  </div>
+  <div class="content-grid">
+    <form class="card reveal" id="contact">
+      <h2 style="font-size:1.8rem">Send us a message</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 16px">
+        <label class="field"><span>First name <em>*</em></span><input class="input" required name="first"></label>
+        <label class="field"><span>Last name <em>*</em></span><input class="input" required name="last"></label>
+        <label class="field"><span>Email <em>*</em></span><input class="input" type="email" required name="email"></label>
+        <label class="field"><span>Phone</span><input class="input" type="tel" name="phone"></label>
+      </div>
+      <label class="field"><span>Message</span><textarea class="input" rows="6" name="message" placeholder="Leave us a message…"></textarea></label>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <aside class="aside-card">
+      <h3>Quick answers</h3>
+      <a class="line" href="shipping-policy.html"><span class="ico">🧊</span>How are frozen items shipped?</a>
+      <a class="line" href="shipping-policy.html"><span class="ico">🏪</span>Store pickup hours</a>
+      <a class="line" href="return-policy.html"><span class="ico">↩️</span>How do I return an item?</a>
+      <a class="line" href="loyalty.html"><span class="ico">⭐</span>How do loyalty points work?</a>
+      <a class="line" href="my-orders.html"><span class="ico">🧾</span>Where are my orders?</a>
+    </aside>
+  </div>
+</div></section>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById("contact").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target, name = f.first.value;
+  const body = `Name: ${f.first.value} ${f.last.value}\nEmail: ${f.email.value}\nPhone: ${f.phone.value}\n\n${f.message.value}`;
+  window.location.href = "mailto:support@ceylonfavs.com?subject=" + encodeURIComponent("Website enquiry from " + name) + "&body=" + encodeURIComponent(body);
+  window.CF.toast("✉️ Opening your email app…");
+});
+</script>
+</body>
+</html>

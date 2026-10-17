@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Orders — Ceylon Favorites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="orders">
+<main>
+<section class="page-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / My Orders</div>
+  <div class="hero-emo">🧾</div>
+  <h1>My Orders</h1>
+  <p>Your order history, all in one place.</p>
+</div></section>
+<section class="content"><div class="wrap content-grid">
+  <div class="card reveal" id="orders"></div>
+  <aside class="aside-card">
+  <h3>Need help?</h3>
+  <p style="color:rgba(255,255,255,.75)">Our team is happy to help with orders, shipping options and frozen deliveries.</p>
+  <a class="line" href="tel:+17373976112"><span class="ico">📞</span>737-397-6112</a>
+  <a class="line" href="mailto:support@ceylonfavs.com"><span class="ico">✉️</span>support@ceylonfavs.com</a>
+  <a class="line" href="customer-support.html"><span class="ico">💬</span>Customer Support</a>
+</aside>
+</div></section>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  const { store, money, esc } = window.CF;
+  function render() {
+    const orders = store.get("cf_orders", []);
+    const el = document.getElementById("orders");
+    if (!orders.length) {
+      el.innerHTML = '<div class="orders-empty"><div class="big">🧾</div><h2 style="font-size:1.7rem">No orders yet</h2><p class="meta">When you check out, your orders will appear here.</p><a class="btn btn-primary" href="category.html">Start shopping</a></div>';
+      return;
+    }
+    el.innerHTML = '<h2 style="font-size:1.6rem">Order history</h2>' + orders.map((o) => `
+      <details class="order-row" style="display:block">
+        <summary style="display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;cursor:pointer;list-style:none">
+          <div><b>#${o.no}</b><div class="meta">${new Date(o.date).toLocaleString()} · ${o.items.reduce((s, i) => s + i.qty, 0)} items</div></div>
+          <span class="pill new" style="position:static">Confirmed</span>
+          <b>${money(o.total)}</b>
+        </summary>
+        <ul style="margin:12px 0 0;padding-left:1.2em;color:var(--muted);font-size:.92rem">${o.items.map((i) => `<li>${i.qty} × ${esc(i.name)} — ${money(i.qty * i.price)}</li>`).join("")}</ul>
+      </details>`).join("");
+  }
+  document.addEventListener("cf:orders", render);
+  render();
+})();
+</script>
+</body>
+</html>

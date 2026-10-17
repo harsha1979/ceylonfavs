@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gift Card — Ceylon Favorites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="gift">
+<main>
+<section class="page-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / Gift Card</div>
+  <div class="hero-emo">🎁</div>
+  <h1>Ceylon Favorites eGift Card</h1>
+  <p>The perfect present for anyone who misses home — or wants to taste it for the first time.</p>
+</div></section>
+<section class="content"><div class="wrap gc-layout">
+  <div class="giftcard reveal" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="logo-text" style="color:#fff">Ceylon Favorites</span><span style="font-weight:800;letter-spacing:.14em;font-size:.75rem">eGIFT CARD</span></div>
+    <div><div class="amt" id="gcPreview">$50</div><div style="opacity:.8;margin-top:6px">A taste of Sri Lanka, delivered with care.</div></div>
+  </div>
+  <div class="card reveal">
+    <h2 style="font-size:1.8rem">Choose an amount</h2>
+    <div class="gc-amounts" id="gcAmounts"></div>
+    <label class="field" id="otherWrap" hidden><span>Other amount (USD)</span><input class="input" type="number" min="5" max="1000" step="1" id="gcOther" placeholder="e.g. 75"></label>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:22px">
+      <b>Quantity</b>
+      <div class="qty"><button type="button" id="gcDec" aria-label="Decrease">−</button><input id="gcQty" value="1" readonly aria-label="Quantity"><button type="button" id="gcInc" aria-label="Increase">+</button></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary" id="gcAdd">Add to cart</button>
+      <button class="btn btn-gold" id="gcBuy">Buy now</button>
+    </div>
+    <p class="meta" style="margin-top:18px">eGift cards are delivered by email and can be used on any product in the store.</p>
+  </div>
+</div></section>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  const { addToCart, giftKey } = window.CF;
+  const amounts = [25, 50, 100, 150, 200, 300, "Other"];
+  let amt = 50, qty = 1;
+  const wrap = document.getElementById("gcAmounts"), other = document.getElementById("gcOther");
+  wrap.innerHTML = amounts.map((a) => `<button type="button" data-amt="${a}" class="${a === amt ? "on" : ""}">${a === "Other" ? "Other" : "$" + a}</button>`).join("");
+  function current() { return amt === "Other" ? Math.round(Number(other.value) || 0) : amt; }
+  function sync() { const v = current(); document.getElementById("gcPreview").textContent = v ? "$" + v : "$—"; document.getElementById("gcQty").value = qty; }
+  wrap.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-amt]"); if (!b) return;
+    amt = b.dataset.amt === "Other" ? "Other" : Number(b.dataset.amt);
+    wrap.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    document.getElementById("otherWrap").hidden = amt !== "Other";
+    if (amt === "Other") other.focus();
+    sync();
+  });
+  other.addEventListener("input", sync);
+  document.getElementById("gcInc").onclick = () => { qty++; sync(); };
+  document.getElementById("gcDec").onclick = () => { qty = Math.max(1, qty - 1); sync(); };
+  function add() { const v = current(); if (v < 5) { other.focus(); return false; } addToCart(giftKey(v), qty); return true; }
+  document.getElementById("gcAdd").onclick = add;
+  document.getElementById("gcBuy").onclick = () => { if (add()) document.querySelector("[data-open-cart]").click(); };
+  sync();
+})();
+</script>
+</body>
+</html>

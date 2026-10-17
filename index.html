@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ceylon Favorites — Sri Lankan Online Store USA</title>
+  <meta name="description" content="Authentic Sri Lankan groceries, spices, teas, snacks and frozen foods delivered across the USA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="home">
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Sri Lankan Online Store · USA</span>
+        <h1>The flavours of <em>home</em>, delivered with care.</h1>
+        <p class="lead">From Maliban biscuits and kottu mee to roasted curry powder, kithul treacle and frozen kimbula buns — everything your Sri Lankan kitchen misses, shipped to all 50 states.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="category.html">Shop all products →</a>
+          <a class="btn btn-ghost" href="#categories">Browse categories</a>
+        </div>
+        <div class="hero-stats">
+          <div><b id="statProducts">180+</b><span>Products</span></div>
+          <div><b>18</b><span>Categories</span></div>
+          <div><b>50</b><span>States shipped</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="plate"><div class="plate-center"><div><small>Today's plate</small><b>Rice &amp;<br>Curry</b></div></div></div>
+        <div class="orbit">🌶️</div>
+        <div class="orbit">🍵</div>
+        <div class="orbit">🥥</div>
+        <div class="orbit">🐟</div>
+        <div class="orbit">🍪</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks -->
+  <section class="perks">
+    <div class="wrap perks-row">
+      <div class="perk"><div class="perk-ico">🚚</div><div><b>$10 local delivery</b><span>Weekends, within 50 miles</span></div></div>
+      <div class="perk"><div class="perk-ico">🧊</div><div><b>Frozen, packed right</b><span>Gel packs &amp; dry ice via UPS</span></div></div>
+      <div class="perk"><div class="perk-ico">⭐</div><div><b>1 point per $1</b><span>100 points = $5 off</span></div></div>
+      <div class="perk"><div class="perk-ico">🏪</div><div><b>Free store pickup</b><span>Dry &amp; frozen, 7 days a week</span></div></div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="block" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow dark">Shop by category</span><h2>Every aisle of a Colombo grocery</h2></div>
+        <p>Eighteen hand-picked categories, from tea-time biscuits to ayurvedic remedies and poya-day offerings.</p>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <!-- New arrivals -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow dark">Just landed</span><h2>New arrivals</h2></div>
+        <a class="btn btn-ghost btn-sm" href="category.html?sort=new">See all new →</a>
+      </div>
+      <div class="prod-grid" id="newGrid"></div>
+    </div>
+  </section>
+
+  <!-- Promos -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap split">
+      <a class="promo gold reveal" href="gift-card.html">
+        <span class="big-emo">🎁</span>
+        <span class="eyebrow dark">eGift Cards</span>
+        <h3>Send a taste of home</h3>
+        <p>Gift cards from $25 to $300 — the easiest present for anyone missing Sri Lanka.</p>
+        <span class="btn btn-primary btn-sm" style="align-self:flex-start">Buy a gift card</span>
+      </a>
+      <a class="promo red reveal" href="loyalty.html">
+        <span class="big-emo">⭐</span>
+        <span class="eyebrow" style="color:#ffd99a">Loyalty Club</span>
+        <h3>Earn on every rupee — er, dollar</h3>
+        <p>25 points just for signing up. 1 point for every $1. Redeem 100 points for $5 off.</p>
+        <span class="btn btn-gold btn-sm" style="align-self:flex-start">Join the club</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Tea-time favourites -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow dark">Tea-time favourites</span><h2>For your 4 o'clock plain tea</h2></div>
+        <a class="btn btn-ghost btn-sm" href="category.html?c=biscuits-and-snacks">All biscuits &amp; snacks →</a>
+      </div>
+      <div class="prod-grid" id="teaGrid"></div>
+    </div>
+  </section>
+
+  <!-- Tea band -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="tea-band reveal">
+        <div style="position:relative">
+          <span class="eyebrow">Pure Ceylon Tea</span>
+          <h2>Dilmah, Bogawanthalawa, Zesta &amp; <em>more</em></h2>
+          <p style="max-width:520px;color:#cfc6b6">Loose leaf and tea bags from the hill country, plus Anchor milk powder for the perfect kiri thé.</p>
+        </div>
+        <a class="btn btn-gold" style="position:relative" href="category.html?c=milk-powder-ceylon-tea">Shop tea →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cook tonight -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="eyebrow dark">Cook tonight</span><h2>Build a Sri Lankan feast</h2></div>
+        <p>Three easy baskets to get you started. Add the lot in one click.</p>
+      </div>
+      <div class="steps" id="bundles"></div>
+    </div>
+  </section>
+
+  <!-- Coming soon -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <a class="promo green reveal" href="movie-food-order.html" style="min-height:240px">
+        <span class="big-emo">🍿</span>
+        <span class="eyebrow">Coming soon</span>
+        <h3>Milton Movie Food Order</h3>
+        <p>Pre-order Sri Lankan short eats for the movie night. Be the first to know when it opens.</p>
+        <span class="btn btn-gold btn-sm" style="align-self:flex-start">Get notified</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    const { D, products, productCard, tint, esc, catLink, addToCart, toast, observeReveals, money, byId } = window.CF;
+    document.getElementById("statProducts").textContent = products.length;
+
+    document.getElementById("catGrid").innerHTML = D.categories.map((c) => `
+      <a class="cat-card reveal" href="${catLink(c)}">
+        <span class="arrow">→</span>
+        <span class="emo" style="background:${tint(c.hue)}">${c.icon}</span>
+        <div><h3>${esc(c.name)}</h3><small>${c.products.length} item${c.products.length > 1 ? "s" : ""}</small></div>
+      </a>`).join("");
+
+    document.getElementById("newGrid").innerHTML = products.filter((p) => p.isNew).slice(0, 8).map((p) => productCard(p, true)).join("");
+
+    const tea = ["Maliban Lemon Puff 200g", "Munchee Ginger Biscuits 400g", "Maliban Cream Cracker 500g", "Maliban Chocolate Cream 200g"];
+    document.getElementById("teaGrid").innerHTML = products.filter((p) => tea.includes(p.name)).map((p) => productCard(p, true)).join("");
+
+    const find = (n) => products.find((p) => p.name === n);
+    const bundles = [
+      { icon: "🍳", title: "Kottu Night", text: "Cut kottu roti, roasted curry powder, chilli pieces and Supiri Soya.", items: ["Fab Cut Kottu Roti 1kg", "Wijaya Roasted Curry Powder 250g", "Wijaya Chilli Pieces 250g", "Delmege Supiri Soya 90g Chicken"] },
+      { icon: "🥞", title: "Hopper Sunday", text: "Hopper mix, Maldive fish and lunumiris — breakfast like Nuwara Eliya.", items: ["Wijaya Hopper Mixture 400g", "MD Lunumiris 380g", "MD Maldive Fish Chips 200g Packet", "Yara Grated Coconut 400g"] },
+      { icon: "🎉", title: "Avurudu Table", text: "Kalu dodol, milk toffee, kithul treacle and kiribath rice.", items: ["Mikee Kalu Dodol 500g", "Mikee Milk Toffee 200g", "AMK Kithul Treacle 725ml", "White Raw Rice (Kiribath) 4lb"] }
+    ];
+    document.getElementById("bundles").innerHTML = bundles.map((b, i) => {
+      const items = b.items.map(find).filter(Boolean);
+      const total = items.reduce((s, p) => s + p.price, 0);
+      return `<div class="step reveal">
+        <div class="perk-ico">${b.icon}</div>
+        <h3>${b.title}</h3>
+        <p>${b.text}</p>
+        <p style="margin-top:14px;color:var(--ink)"><b>${items.length} items · ${money(total)}</b></p>
+        <button class="btn btn-primary btn-sm" data-bundle="${i}">Add bundle</button>
+      </div>`;
+    }).join("");
+    document.getElementById("bundles").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-bundle]");
+      if (!b) return;
+      bundles[b.dataset.bundle].items.map(find).filter(Boolean).forEach((p) => addToCart(p.id));
+      toast(`🧺 ${bundles[b.dataset.bundle].title} bundle added`);
+    });
+
+    observeReveals();
+  })();
+</script>
+</body>
+</html>

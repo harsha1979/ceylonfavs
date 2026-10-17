@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Rewards — Ceylon Favorites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="rewards">
+<main>
+<section class="page-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / My Rewards</div>
+  <div class="hero-emo">🏆</div>
+  <h1>My Rewards</h1>
+  <p>Track your points and see how close you are to your next reward.</p>
+</div></section>
+<section class="content"><div class="wrap content-grid">
+  <div>
+    <div class="card reveal">
+      <span class="eyebrow dark">Points balance</span>
+      <div style="font-family:var(--display);font-size:4rem;font-weight:700;color:var(--leaf);line-height:1;margin:10px 0" id="pts">0</div>
+      <div class="meter"><i id="meter" style="width:0"></i></div>
+      <p class="meta" id="nextMsg"></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <button class="btn btn-primary" id="redeem">Redeem 100 pts for $5</button>
+        <button class="btn btn-ghost" id="join">Claim 25 sign-up points</button>
+      </div>
+    </div>
+    <div class="card reveal">
+      <h3 style="font-size:1.4rem">Your vouchers</h3>
+      <div id="vouchers"></div>
+    </div>
+  </div>
+  <aside class="aside-card">
+    <h3>Ways to earn</h3>
+    <a class="line" href="category.html"><span class="ico">🛒</span>1 point for every $1 spent</a>
+    <a class="line" href="#" onclick="document.getElementById('join').click();return false;"><span class="ico">📝</span>25 points for signing up</a>
+    <a class="line" href="loyalty.html"><span class="ico">⭐</span>How the Loyalty Club works</a>
+  </aside>
+</div></section>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  const { store, toast } = window.CF;
+  function render() {
+    const p = store.get("cf_points", 0), v = store.get("cf_vouchers", []);
+    document.getElementById("pts").textContent = p;
+    const into = p % 100;
+    document.getElementById("meter").style.width = (p >= 100 ? 100 : into) + "%";
+    document.getElementById("nextMsg").textContent = p >= 100 ? "🎉 You have enough points for a $5 reward!" : `${100 - into} more points until your next $5 reward.`;
+    document.getElementById("redeem").disabled = p < 100;
+    document.getElementById("join").disabled = store.get("cf_joined", false);
+    document.getElementById("vouchers").innerHTML = v.length
+      ? v.map((x) => `<div class="order-row"><div><b>${x.code}</b><div class="meta">${new Date(x.date).toLocaleDateString()}</div></div><span></span><b style="color:var(--leaf)">$5.00 off</b></div>`).join("")
+      : '<p class="meta" style="margin:0">No vouchers yet — redeem 100 points to get your first one.</p>';
+  }
+  document.getElementById("join").onclick = () => { store.set("cf_joined", true); store.set("cf_points", store.get("cf_points", 0) + 25); toast("⭐ 25 welcome points added"); render(); };
+  document.getElementById("redeem").onclick = () => {
+    const p = store.get("cf_points", 0); if (p < 100) return;
+    store.set("cf_points", p - 100);
+    const v = store.get("cf_vouchers", []); v.unshift({ code: "CEYLON5-" + Math.random().toString(36).slice(2, 7).toUpperCase(), date: Date.now() });
+    store.set("cf_vouchers", v); toast("🎉 $5 voucher created"); render();
+  };
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop — Ceylon Favorites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+</head>
+<body data-page="category">
+
+<main>
+  <section class="page-hero" id="catHero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> / <span id="crumb">Shop</span></div>
+      <div class="hero-emo" id="heroEmo">🛍️</div>
+      <h1 id="heroTitle">All products</h1>
+      <p id="heroBlurb">Everything from the island, in one place.</p>
+    </div>
+  </section>
+
+  <div class="wrap shop-layout">
+    <aside class="side" id="side" aria-label="Categories"></aside>
+    <div>
+      <div class="toolbar">
+        <span class="count" id="count"></span>
+        <div class="controls">
+          <input class="input" type="search" id="q" placeholder="Filter products…" aria-label="Filter products">
+          <label class="chip"><input type="checkbox" id="inStock"> In stock only</label>
+          <select class="input" id="sort" aria-label="Sort">
+            <option value="featured">Featured</option>
+            <option value="new">New arrivals first</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="az">Name: A–Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="prod-grid" id="grid"></div>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    const { D, products, productCard, esc, tint, observeReveals } = window.CF;
+    const params = new URLSearchParams(location.search);
+    const slug = params.get("c");
+    const cat = D.categories.find((c) => c.slug === slug);
+    const qEl = document.getElementById("q"), sortEl = document.getElementById("sort"), stockEl = document.getElementById("inStock");
+    qEl.value = params.get("q") || "";
+    if (params.get("sort")) sortEl.value = params.get("sort");
+
+    if (cat) {
+      document.title = cat.name + " — Ceylon Favorites";
+      document.getElementById("crumb").innerHTML = `<a href="category.html">Shop</a> / ${esc(cat.name)}`;
+      document.getElementById("heroEmo").textContent = cat.icon;
+      document.getElementById("heroTitle").textContent = cat.name;
+      document.getElementById("heroBlurb").textContent = cat.blurb;
+      document.getElementById("catHero").style.background =
+        `radial-gradient(600px 260px at 90% 0%, hsl(${cat.hue} 75% 55% / .45), transparent 70%), var(--leaf)`;
+    } else if (qEl.value) {
+      document.getElementById("heroTitle").textContent = `Results for “${qEl.value}”`;
+      document.getElementById("heroBlurb").textContent = "Searching across every category.";
+    }
+
+    document.getElementById("side").innerHTML = `<h4>Categories</h4>
+      <a href="category.html" class="${cat ? "" : "active"}">All products <span class="n">${products.length}</span></a>` +
+      D.categories.map((c) => `<a href="category.html?c=${c.slug}" class="${c === cat ? "active" : ""}">${c.icon} ${esc(c.name)} <span class="n">${c.products.length}</span></a>`).join("");
+    const activeLink = document.querySelector(".side a.active");
+    if (activeLink && window.innerWidth < 900) activeLink.scrollIntoView({ inline: "center", block: "nearest" });
+
+    function render() {
+      const q = qEl.value.trim().toLowerCase();
+      let list = products.filter((p) => (!cat || p.cat === cat) && (!q || (p.name + " " + p.cat.name).toLowerCase().includes(q)) && (!stockEl.checked || !p.oos));
+      const s = sortEl.value;
+      if (s === "low") list.sort((a, b) => a.price - b.price);
+      if (s === "high") list.sort((a, b) => b.price - a.price);
+      if (s === "az") list.sort((a, b) => a.name.localeCompare(b.name));
+      if (s === "new") list.sort((a, b) => b.isNew - a.isNew);
+      document.getElementById("count").textContent = `${list.length} product${list.length === 1 ? "" : "s"}`;
+      document.getElementById("grid").innerHTML = list.length
+        ? list.map((p) => productCard(p, !cat)).join("")
+        : `<div class="empty" style="grid-column:1/-1"><div class="big">🔍</div><p>No products match “${esc(qEl.value)}”.<br>Try “curry”, “tea” or “Maliban”.</p></div>`;
+      observeReveals();
+    }
+    [qEl, sortEl, stockEl].forEach((el) => el.addEventListener("input", render));
+    render();
+  })();
+</script>
+</body>
+</html>
